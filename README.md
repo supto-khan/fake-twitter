@@ -1,27 +1,54 @@
-# TwitterClone
+# Angular Project - Social Media Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+This repository contains an Angular project for a social media application. The application allows users to login, create new user accounts, view a home page with a sidebar, make tweets, and interact with other users. The project utilizes JWT token-based authentication for secure user access.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To run the project, please follow the steps below:
 
-## Code scaffolding
+1. Clone the repository to your local machine:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    git clone <repository_url>
+    cd <project_folder>
 
-## Build
+2. Install the project dependencies:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   npm install
 
-## Running unit tests
+3. Start the development server:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  ng serve
 
-## Running end-to-end tests
+The server will be available at http://localhost:4200/.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Login
 
-## Further help
+Upon accessing the front-end server at http://localhost:4200/, you will be presented with a login page. You can use the following credentials to login:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  Email: supto@test.com
+  Password: 123456
+Alternatively, you can create a new user account by clicking the "Sign Up" button.
+
+## Home Page
+
+After successfully logging in, you will be redirected to the home page. The home page contains a sidebar, a "Make Tweet" option, and a user list.
+
+## Sidebar Navigation
+
+You can navigate to different routes in the application using the sidebar.
+
+## Make Tweet
+
+The "Make Tweet" option allows you to create new posts (tweets) on the social media platform.
+
+## User List
+
+The user list displays a list of users. From this list, you can follow or unfollow a user, view a user's profile page, and access user details.
+
+## JWT Token Authentication
+
+The application uses JWT token-based authentication to ensure secure access to user data. The token sent with each API request will change every time it expires. If the token expires or becomes invalid, you will be redirected to the login page for reauthentication.
+
+## Happy Coding!
+
+Enjoy exploring and developing this social media application using Angular! If you encounter any issues or have any questions, feel free to reach out. Happy coding! 😊🚀
