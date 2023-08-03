@@ -13,14 +13,20 @@
             <input matInput formControlName="password" />
           </mat-form-field>
           <div class="col-sm-6">
-            <button
-              mat-flat-button
-              color="primary"
-              (click)="login()"
-              [disabled]="!loginForm.valid"
-            >
-              Sign In
-            </button>
+            <div class="buttons">
+              <button
+                mat-flat-button
+                color="primary"
+                (click)="login()"
+                [disabled]="!loginForm.valid"
+              >
+                Sign In
+              </button>
+
+              <button mat-flat-button color="primary" [routerLink]="'/signup'">
+                Sign Up
+              </button>
+            </div>
           </div>
         </div>
       </form>

@@ -409,3 +409,8 @@ body {
     -webkit-transform: rotate(360deg);
   }
 }
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
