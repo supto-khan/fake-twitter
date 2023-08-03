@@ -1,0 +1,20 @@
+<div class="wrap">
+  <form [formGroup]="postForm" class="post-form">
+    <div class="row">
+      <mat-form-field class="col-12">
+        <mat-label>What is Happening?!</mat-label>
+        <textarea matInput formControlName="content"></textarea>
+      </mat-form-field>
+      <div class="col-sm-3">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="addNewTweet()"
+          [disabled]="!postForm.valid"
+        >
+          Post
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

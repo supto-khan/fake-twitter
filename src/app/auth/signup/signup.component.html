@@ -1,0 +1,33 @@
+<div class="wrap">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <form [formGroup]="signUpForm" class="signup-form">
+        <h2>Signup</h2>
+        <div class="row">
+          <mat-form-field class="col-sm-12">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" />
+          </mat-form-field>
+          <mat-form-field class="col-sm-12">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+          </mat-form-field>
+          <mat-form-field class="col-sm-12">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" />
+          </mat-form-field>
+          <div class="col-sm-6">
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="signUp()"
+              [disabled]="!signUpForm.valid"
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

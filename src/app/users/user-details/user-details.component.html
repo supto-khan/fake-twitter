@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-user-card
+      [userSub]="userService.user"
+      [followersSub]="userService.followersUserSub"
+      [followingSub]="userService.followingUserSub"
+      [tweetSub]="userService.tweetsSub"
+    ></app-user-card>
+  </div>
+</div>

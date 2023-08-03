@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8">
+    <h1>Home</h1>
+    <app-post-tweet></app-post-tweet>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="loading" *ngIf="twitterService.isLoading"></div>
+      </div>
+      <div class="col-sm-12">
+        <ng-container
+          *ngIf="
+            !twitterService.isLoading &&
+            twitterService &&
+            timelinesData.length > 0
+          "
+        >
+          <div *ngFor="let item of timelinesData" class="post-content">
+            <div class="user">
+              <h4>
+                <a [routerLink]="['/user', item.user.id]">
+                  {{ item.user.username | titlecase }}
+                </a>
+              </h4>
+            </div>
+            <div class="post">
+              <p class="post-text">
+                {{ item.content }}
+              </p>
+              <span class="posted-date">
+                {{ item.published | date : "MMM dd,y" }}
+              </span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div *ngIf="!twitterService.isLoading && timelinesData">
+      <button
+        class="pagination-button"
+        mat-flat-button
+        color="primary"
+        (click)="paginationInfo()"
+      >
+        See more
+      </button>
+    </div>
+  </div>
+  <div class="col-md-4 user-to-follow">
+    <h2>Users to follow</h2>
+    <app-users></app-users>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="col-sm-12">
+  <div class="user-card">
+    <div class="user" *ngIf="userSub | async as user">
+      <h1>
+        <mat-icon>supervised_user_circle</mat-icon>
+        {{ user.username | titlecase }}
+      </h1>
+      <p>{{ user.email }}</p>
+      <span>{{ user.join_date | date : "MMM y" }}</span>
+    </div>
+    <div class="user-numbers">
+      <span class="value" *ngIf="tweetSub" style="color: #fff">
+        {{ tweetSub.getValue().length }}
+        <span class="name">Tweets</span>
+      </span>
+      <span class="value" *ngIf="followingSub">
+        {{ followingSub.getValue().length }}
+        <span class="name"> Following </span>
+      </span>
+      <span class="value" *ngIf="followersSub">
+        {{ followersSub.getValue().length }}
+        <span class="name"> Followers </span>
+      </span>
+    </div>
+
+    <div class="tabs-list">
+      <mat-tab-group>
+        <div class="loading" *ngIf="userService.isLoading"></div>
+        <mat-tab label="Tweet" *ngIf="tweetSub">
+          <div *ngFor="let tweet of tweetSub | async">
+            <div class="post">
+              <p class="post-text">
+                {{ tweet.content }}
+              </p>
+              <span class="posted-date">
+                Tweet on: {{ tweet.published | date : "MMM dd,y" }}
+              </span>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Following" *ngIf="followingSub">
+          <div *ngFor="let following of followingSub | async">
+            <div class="user">
+              <h4>{{ following.username | titlecase }}</h4>
+              <span>{{ following.join_date | date : "MMM dd,y" }}</span>
+            </div>
+            <div class="user-wrap">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="user-list">
+                    <div class="user-details">
+                      <div class="user-name">
+                        <mat-icon>account_circle</mat-icon>
+                        <h4>
+                          {{ following.username | titlecase }}
+                        </h4>
+                      </div>
+                      <p>{{ following.email }}</p>
+                      <span>{{ following.join_date | date : "MMM d, y" }}</span>
+                    </div>
+                    <button
+                      class="follow"
+                      (click)="onFollow(following)"
+                      *ngIf="!following.isFollowing"
+                    >
+                      Follow
+                    </button>
+                    <button
+                      class="unfollow"
+                      (click)="onUnfollow(following)"
+                      *ngIf="following.isFollowing"
+                    >
+                      Unfollow
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Followers" *ngIf="followersSub">
+          <div *ngFor="let followers of followersSub | async">
+            <div class="user-wrap">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="user-list">
+                    <div class="user-details">
+                      <div class="user-name">
+                        <mat-icon>account_circle</mat-icon>
+                        <h4>
+                          {{ followers.username | titlecase }}
+                        </h4>
+                      </div>
+                      <p>{{ followers.email }}</p>
+                      <span>{{ followers.join_date | date : "MMM d, y" }}</span>
+                    </div>
+                    <button
+                      class="follow"
+                      (click)="onFollow(followers)"
+                      *ngIf="!followers.isfollowers"
+                    >
+                      Follow
+                    </button>
+                    <button
+                      class="unfollow"
+                      (click)="onUnfollow(followers)"
+                      *ngIf="followers.isFollowing"
+                    >
+                      Unfollow
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

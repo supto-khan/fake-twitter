@@ -1,0 +1,62 @@
+<div class="user-wrap">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>All Users</h1>
+      <form [formGroup]="searchForm" class="search-form">
+        <div class="row">
+          <mat-form-field class="col-sm-8">
+            <mat-label>Search</mat-label>
+            <input
+              matInput
+              formControlName="search"
+              (keyup.enter)="search($event)"
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-12">
+      <div class="loading" *ngIf="userService.isLoading"></div>
+    </div>
+    <div class="col-sm-12" *ngFor="let user of userService.usersSub | async">
+      <ng-container *ngIf="!userService.isLoading">
+        <div class="user-list">
+          <div class="user-details">
+            <div class="user-name">
+              <mat-icon>account_circle</mat-icon>
+              <h4 [routerLink]="['/user', user.id]" (click)="goToUser(user)">
+                {{ user.username | titlecase }}
+              </h4>
+            </div>
+            <p>{{ user.email }}</p>
+            <span>{{ user.join_date | date : "MMM d, y" }}</span>
+          </div>
+          <button
+            class="follow"
+            (click)="onFollow(user)"
+            *ngIf="!user.isFollowing"
+          >
+            Follow
+          </button>
+          <button
+            class="unfollow"
+            (click)="onUnfollow(user)"
+            *ngIf="user.isFollowing"
+          >
+            Unfollow
+          </button>
+        </div>
+      </ng-container>
+    </div>
+    <div *ngIf="!userService.isLoading">
+      <button
+        class="pagination-button"
+        mat-flat-button
+        color="primary"
+        (click)="paginationInfo()"
+      >
+        See more
+      </button>
+    </div>
+  </div>
+</div>

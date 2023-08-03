@@ -1,0 +1,11 @@
+<div>
+  <button [disabled]="currentPage === 1" (click)="setPage(currentPage - 1)">
+    Previous
+  </button>
+  <button
+    [disabled]="currentPage * pageSize >= data.length"
+    (click)="setPage(currentPage + 1)"
+  >
+    Next
+  </button>
+</div>
